@@ -10,7 +10,12 @@
 	</div>
 	<div>
 		<div *ngFor="let month of calendar">
-			{{month.monthLabel}} {{month.yearLabel}}
+			<div>{{month.monthLabel}} {{month.yearLabel}}</div>
+			<div *ngFor="let day of month.days">
+				<div *ngIf="day.visible">
+					{{day.dayNumber}}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
