@@ -117,15 +117,17 @@ export class AppComponent {
 
         }
 
-        for(let e=currentDate.getDay(); e<=6; e++) {
-            this.calendar[currentCalendar].weeks[currentWeek].days.push({
-                dayNumber: null,
-                visible: false,
-                holiday: false,
-                weekend: false,
-                dayOfWeek: e
-            });
-        }
+        if(currentDate.getDay()!=0)
+            for(let e=currentDate.getDay(); e<=6; e++) {
+                console.log(e);
+                this.calendar[currentCalendar].weeks[currentWeek].days.push({
+                    dayNumber: null,
+                    visible: false,
+                    holiday: false,
+                    weekend: false,
+                    dayOfWeek: e
+                });
+            }
 
         console.log(this.calendar);
     }
