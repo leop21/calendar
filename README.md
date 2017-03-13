@@ -6,3 +6,5 @@ To run, execute the following commands:
 npm install
 
 npm start
+
+The port will be displayed to you as http://localhost:8080/.
