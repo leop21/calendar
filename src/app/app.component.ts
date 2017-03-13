@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CalendarService} from './app.service';
 
 @Component({
   selector: 'calendar-app',
@@ -14,7 +15,7 @@ export class AppComponent {
 
     public calendar: any = [];
 
-    constructor() {
+    constructor(private calendarService: CalendarService) {
     }
 
     public string2Date(dateString: string, dateFormat: string) {
@@ -39,7 +40,23 @@ export class AppComponent {
         return new Date(parseInt(year), parseInt(month), parseInt(day));
     }
 
+    addHoliday(year:string, month:string, day:string, weekDay:number, currentCalendar:number, currentWeek: number ) {
+        this.calendarService.isHoliday(this.countryCode, year, month, day).subscribe(
+            res => {
+
+                if(res.holidays.length>0) {
+                    this.calendar[currentCalendar].weeks[currentWeek].days[weekDay].holiday = true;
+                    console.log(res);
+                }
+            },
+            error => {
+
+            }
+        );
+    }
+
     createCalendars() {
+        
         let currentDate: Date = this.string2Date(this.startDate, "yyyy-mm-dd");
         let newMonth: Boolean = true;
         let newWeek: Boolean;
@@ -85,6 +102,7 @@ export class AppComponent {
                         dayOfWeek: e
                     });
                 }
+                this.addHoliday(currentDate.getFullYear().toString(), (currentDate.getMonth()+1).toString(), currentDate.getDate().toString(), currentDate.getDay(), currentCalendar, currentWeek);
                 newWeek = false;                
             }
 
@@ -95,6 +113,9 @@ export class AppComponent {
                 weekend: (currentDate.getDay() == 6 || currentDate.getDay() == 0),
                 dayOfWeek: currentDate.getDay()
             });
+
+
+
             let lastDayOfWeek = currentDate.getDay();
             currentDate.setDate(currentDate.getDate() + 1);
 
