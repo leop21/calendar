@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+    public startDate: Date;
+    public numberOfDays: number;
+    public countryCode: string;
+
     constructor() {
+    }
+
+    createCalendars() {
+
     }
 }

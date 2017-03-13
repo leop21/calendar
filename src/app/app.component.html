@@ -1,1 +1,9 @@
-<h1>Calendar App</h1>
+<div class="calendar-component">
+	<h1>Calendar App</h1>
+
+	<div><span>Start Date:</span><input type="date" name="startDate" [ngModel]="startDate"></div>
+	<div><span>Number of Days:</span><input type="text" name="startDate" [ngModel]="numberOfDays"></div>
+	<div><span>Country Code:</span><input type="text" name="startDate" [ngModel]="countryCode"></div>
+
+	<button (click)="createCalendars()">Create Calendars</button>
+</div>
