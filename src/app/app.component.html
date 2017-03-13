@@ -1,9 +1,16 @@
 <div class="calendar-component">
 	<h1>Calendar App</h1>
 
-	<div><span>Start Date:</span><input type="date" name="startDate" [ngModel]="startDate"></div>
-	<div><span>Number of Days:</span><input type="text" name="startDate" [ngModel]="numberOfDays"></div>
-	<div><span>Country Code:</span><input type="text" name="startDate" [ngModel]="countryCode"></div>
+	<div>
+		<div><span>Start Date:</span><input type="date" name="startDate" [(ngModel)]="startDate"></div>
+		<div><span>Number of Days:</span><input type="text" name="numberOfDays" [(ngModel)]="numberOfDays"></div>
+		<div><span>Country Code:</span><input type="text" name="countryCode" [(ngModel)]="countryCode"></div>
 
-	<button (click)="createCalendars()">Create Calendars</button>
+		<button (click)="createCalendars()">Create Calendars</button>
+	</div>
+	<div>
+		<div *ngFor="let month of calendar">
+			{{month.monthLabel}} {{month.yearLabel}}
+		</div>
+	</div>
 </div>
