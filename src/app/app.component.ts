@@ -63,7 +63,7 @@ export class AppComponent {
                 let startingDayOfWeek = currentDate.getDay();
                 for(let e=0; e<startingDayOfWeek; e++) {
                     this.calendar[currentCalendar].weeks[currentWeek].days.push({
-                        dayNumber: null,
+                        dayNumber: "",
                         visible: false,
                         holiday: false,
                         weekend: false,
@@ -78,7 +78,7 @@ export class AppComponent {
                 let startingDayOfWeek = currentDate.getDay();
                 for(let e=0; e<startingDayOfWeek; e++) {
                     this.calendar[currentCalendar].weeks[currentWeek].days.push({
-                        dayNumber: null,
+                        dayNumber: "",
                         visible: false,
                         holiday: false,
                         weekend: false,
@@ -92,7 +92,7 @@ export class AppComponent {
                 dayNumber: currentDate.getDate(),
                 visible: true,
                 holiday: false,
-                weekend: false,
+                weekend: (currentDate.getDay() == 6 || currentDate.getDay() == 0),
                 dayOfWeek: currentDate.getDay()
             });
             let lastDayOfWeek = currentDate.getDay();
@@ -101,7 +101,7 @@ export class AppComponent {
             if((currentDate.getDate()) == 1){
                 for(let e=currentDate.getDay(); e<=6; e++) {
                     this.calendar[currentCalendar].weeks[currentWeek].days.push({
-                        dayNumber: null,
+                        dayNumber: "",
                         visible: false,
                         holiday: false,
                         weekend: false,

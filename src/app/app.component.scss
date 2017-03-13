@@ -5,7 +5,18 @@
 		}
 		.week {
 			.day {
-				display: inline;
+				display: table-cell;
+				width: 40px;
+				height: 40px;
+			}
+			.visible {
+				background-color: green;
+			}
+			.invisible {
+				background-color: grey;
+			}
+			.weekend {
+				background-color: yellow;
 			}
 		}
 
